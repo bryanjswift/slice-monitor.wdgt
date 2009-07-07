@@ -55,7 +55,22 @@ function fetchData(callback, side) {
     // Clear message
     $('div#back_message').html('');
     
-    // Start spinner
+    // Get the spinner for this side
+    spinner = $('img#'+side+'_spinner');
+    
+    // If there are no sliceblocks, use the dark spinner & fade it a bit
+    // But only if we are at the front
+    if(side == 'front' && $('div#content').children().length == 0) {
+        spinner
+            .attr('src', 'gfx/spinners/front_dark.gif')
+            .css('opacity', 0.5);
+    } else {
+        spinner
+            .attr('src', 'gfx/spinners/front.gif')
+            .css('opacity', 1);
+    }
+    
+    // Show the spinner
     $('img#'+side+'_spinner').show();
     
     // Run ajax
@@ -424,8 +439,6 @@ function buildFrontSliceList(preData)
         if (i == 0) {
             clone.addClass('first')
         }
-        
-        clone.click(function(){ alert('qwqqqqqq'); })
         
         clone.appendTo('div#content');
         alert('.. appending '+current+', ('+slugify(current)+') to content.');
