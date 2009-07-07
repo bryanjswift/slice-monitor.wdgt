@@ -78,7 +78,7 @@ function fetchData(callback, side) {
         success: callback,
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             if (window.isFront) {
-                showback();
+                showBack();
             }
             if(textStatus == 'timeout') {
                 $('div#back_message').html('Timeout error: (recheck API Key?)');
@@ -366,15 +366,25 @@ function buildFrontSliceList(preData)
         // Check if this slice is selected
         if(selectedSlicesList.inArray(slugify(name))) {
             
-            status = $(this).find('status').text()
-            bw_in = $(this).find('bw-in').text()
-            bw_out = $(this).find('bw-out').text()
+            status = $(this).find('status').text();
+            bw_in = $(this).find('bw-in').text();
+            bw_out = $(this).find('bw-out').text();
+            bw_iototal = parseFloat(bw_in) + parseFloat(bw_out);
+            bw_available = $(this).find('progress').text();
         
-            // Add to temp
-            $('div#temp').append('<div class="sliceblock" id="'+slugify(name)+'"><div class="indicator '+status+'"></div><div class="header"><span class="name">'+name+'</span><span class="dash">&mdash;</span><span class="addresses"></span></div><div class="stats"><span class="status"><label>Status:</label> '+status+'</span><span class="bw"><label>Bandwidth:</label> '+bw_in+' in / '+bw_out+' out</span></div></div>');
+            // Build sliceblock
+            sliceblock = $('<div class="sliceblock" id="'+slugify(name)+'"></div>')
+                            .append($('<div class="indicator '+status+'"></div>'))
+                            .append($('<div class="header"><span class="name">'+name+'</span><span class="dash">&mdash;</span><span class="addresses"></span></div>'))
+                            .append($('<div class="stats"><span class="status">'+
+                                      '<label>Status:</label> '+status+'</span>'+
+                                      '<span class="bw">'+
+                                        '<label>Bandwidth:</label> ' + bw_iototal + '/' + bw_available + 'GB '+
+                                        '<span class="in_out">('+bw_in+' in / '+bw_out+' out)</span>'+
+                                      '</span></div>'));
             
             // Add addresses
-            addresses = $('div#temp div#'+slugify(name)+' span.addresses');
+            addresses = $('span.addresses', sliceblock);
             $('address', $(this).find('addresses')).each(function(i){
                 if (i == 0) {
                     addresses.text($(this).text());
@@ -382,6 +392,19 @@ function buildFrontSliceList(preData)
                     addresses.append(', '+$(this).text());
                 }
             });
+
+            // Set up bandwidth in & out fader
+            $('div.stats', sliceblock).hover(
+                function() {
+                    $('span.in_out', this).fadeIn(100);
+                },
+                function() {
+                    $('span.in_out', this).fadeOut(100);
+                }
+            );
+            
+            // Add to temp
+            $('div#temp').append(sliceblock);
             
             alert('... added '+slugify(name)+' to temp.');
         }
@@ -393,10 +416,18 @@ function buildFrontSliceList(preData)
     for(i = 0; i < selectedSlicesList.length; i++) {
         current = selectedSlicesList[i]
         slice = $('div#temp div#'+current);
+        clone = slice.clone(true);
+    
+        // Remove the one in temp
+        slice.remove();
+        
         if (i == 0) {
-            slice.addClass('first')
+            clone.addClass('first')
         }
-        slice.appendTo('div#content');
+        
+        clone.click(function(){ alert('qwqqqqqq'); })
+        
+        clone.appendTo('div#content');
         alert('.. appending '+current+', ('+slugify(current)+') to content.');
     }
     
