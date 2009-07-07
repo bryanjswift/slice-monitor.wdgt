@@ -522,9 +522,17 @@ function updateFrontSize(firstLoad)
         alert('resize from: '+from+', to: '+to)
         alert('math: ('+count+'*'+blockHeight+')+'+widgetHeight+' = '+to)
         
-        if (from == to) {
-            alert('No need to resize front, from updateFrontSize()');
-        } else if(to < widgetHeight) {
+        // Don't resize the widget to smaller than backHeight
+        if(to < backHeight) {
+            widget_to = backHeight;
+        } else {
+            widget_to = to;
+        }
+        
+        //if (from == to) {
+        //    alert('No need to resize front, from updateFrontSize()');
+        
+        if(to < widgetHeight) {
             alert('Too small front resize, reverting back to default');
             
             // Resize widget first
@@ -532,15 +540,15 @@ function updateFrontSize(firstLoad)
             $('div#frontWrap').css('height', widgetHeight);
             
             // Show back and print error
-            $('div#back_message').html('Error: '+(count+1)+' slices found.')
-            showBack();
+            //$('div#back_message').html('Error: '+(count+1)+' slices found.')
+            //showBack();
             
         } else {
             // Resize widget first
-            window.resizeTo(widgetWidth, to);
+            window.resizeTo(widgetWidth, widget_to);
         
             // Save new widget heght
-            setPref('widgetHeight', to);
+            setPref('widgetHeight', widget_to);
         
             // Resize front
             //widgetAnimationResizer(from, to);
