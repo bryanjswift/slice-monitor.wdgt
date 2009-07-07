@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="scripts/jquery.js" charset="utf-8"></script>
+    <script type="text/javascript" src="scripts/jquery.ui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleInfoButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleScrollbar.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleScrollArea.js" charset="utf-8"></script>
+    <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/utilities.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/setup.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/Text.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/ScrollArea.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/InfoButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/GlassButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="scripts/main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="scripts/ui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="scripts/update.js" charset="utf-8"></script>
+    <script type="text/javascript" src="scripts/md5.js" charset="utf-8"></script>
+</head>
+<body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
+    <div id="front">
+        <div id="frontWrap">
+            <div style="width:0; height: 0; background: url(gfx/back/background-middle.png);"></div>
+            <!-- black background -->
+            <div id="background-wrap">
+                <img src="gfx/back-top.png" id="background-top">
+                <img src="gfx/back-bottom.png" id="background-bottom">
+                <div id="background"></div>
+            </div>
+            <div id="temp" style="display: none; "></div>
+            <div id="content"><!--
+                <div class="sliceblock first">
+                    <!-- indicator --
+                    <div class="indicator"></div>
+                    <!-- header --
+                    <div class="header">
+                        <span class="name">lynx</span>
+                        <span class="dash">—</span>
+                        <span class="addresses">209.20.80.125</span>
+                    </div>
+                    <!-- stats --
+                    <div class="stats">
+                        <span class="status"><label>Status:</label> active</span>
+                        <span class="bw"><label>Bandwidth:</label> 0.22 in / 1.85 out</span>
+                    </div>
+                </div>-->
+            </div>
+            <!-- white overlay -->
+            <div id="overlay-wrap">
+                <img src="gfx/overlay-top.png" id="overlay-top">
+                <img src="gfx/overlay-bottom.png" id="overlay-bottom">
+                <div id="overlay"></div>
+            </div>
+            <!-- info -->
+            <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden" style="opacity:0.5;"></div>
+            <!-- resize dragger -->
+            <!--<img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="mouseDown(event);">-->
+            <img src="Images/front.gif" id="front_spinner"></div>
+    </div>
+    <div id="back">
+        <!-- black background -->
+        <div id="back-background-wrap">
+            <img src="gfx/back/background-top.png" id="back-background-top">
+            <img src="gfx/back/background-bottom.png" id="back-background-bottom">
+            <div id="back-background"></div>
+        </div>
+        <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
+        <img src="Images/line.png" id="seperator">
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="help" apple-style="part-height-dependent: true;"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="apiKeyLabel" apple-style="part-height-dependent: true;"></div>
+        <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="apiKeyField" onkeyup="activateFetchSlicesButton(event)">
+        <div apple-part="com.apple.Dashcode.part.glassbutton" class="apple-no-children" id="fetchSlicesButton"></div>
+        <img src="Images/line.png" id="seperator1">
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="slicesLabel" apple-style="part-height-dependent: true;"></div>
+        <div id="slices-temp" style="display: none; "></div>
+        <div id="slicesContainer">
+            <ul id="slices">
+            </ul>
+        </div>
+        <div id="back_message"></div>
+        <img src="Images/line.png" id="seperator2">
+        <img src="Images/back.gif" id="back_spinner">
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="sliceMonitor" style="cursor: pointer;" onclick="javascript:widget.openURL('http://luddep.se/slicemonitor/');"></div>
+    </div>
+</body>
+</html>

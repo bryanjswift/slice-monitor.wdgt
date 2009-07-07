@@ -1,0 +1,565 @@
+div#back_message span.update { font-style: normal; font-size: 8pt; background: #222; padding: 2px 4px; -webkit-border-radius: 2px; }
+
+div#slicesContainer {
+    position: absolute;
+}
+
+ul#slices {
+    font-family: 'Helvetica Neue';
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul#slices li {
+    font-size: 8pt;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(60, 60, 60) 1px 1px 1px;
+    width: 30%;
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
+    float: left;
+    overflow: hidden;
+    padding-top: 0px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    height: 18px;
+    -apple-dashboard-region: dashboard-region(control rectangle);
+    -webkit-border-top-right-radius: 2px 2px;
+    -webkit-border-top-left-radius: 2px 2px;
+    -webkit-border-bottom-left-radius: 2px 2px;
+    -webkit-border-bottom-right-radius: 2px 2px;
+}
+
+ul#slices li.placeholder {
+    background-image: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: rgb(102, 102, 102);
+}
+
+ul#slices li.helper {
+    background-image: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: rgb(34, 34, 34);
+    background-position: initial initial;
+}
+
+ul#slices input {
+    position: absolute;
+}
+
+ul#slices span {
+    position: relative;
+    left: 18px;
+    top: 1px;
+}
+
+ul#slices li:hover {
+    background-image: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: rgb(34, 34, 34);
+}
+
+ul#slices span:hover {
+    cursor: move;
+}
+
+#slicesScrollbar {
+    position: absolute;
+    top: 109px;
+    left: 382px;
+    height: 44px;
+    width: 19px;
+}
+
+div#frontWrap {
+    position: relative;
+    height: 78px;
+}
+
+div.sliceblock {
+    height: 56px;
+    width: 392px;
+    position: relative;
+    background-image: url(gfx/sliceblock/background.png);
+    background-repeat: repeat-x;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: initial;
+    text-shadow: rgb(0, 0, 0) 1px 1px 1px;
+    font-family: 'Helvetica Neue';
+}
+
+div.header {
+    display: block;
+    position: absolute;
+    left: 48px;
+    height: 20px;
+    padding-top: 5px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    padding-left: 7px;
+    width: 336px;
+    overflow: hidden;
+    background-image: url(gfx/line.png);
+    background-repeat: repeat-x;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: initial;
+    background-position: 100% 100%;
+}
+
+div.stats {
+    display: block;
+    position: absolute;
+    top: 36px;
+    left: 48px;
+    padding-left: 7px;
+}
+
+div.indicator {
+    position: absolute;
+    width: 50px;
+    height: 56px;
+    background-image: url(gfx/sliceblock/indicator_orange.png);
+    background-repeat: initial;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: initial;
+}
+
+div.first div.indicator {
+    background-image: url(gfx/sliceblock/indicator_orange_first.png);
+    background-repeat: initial;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: initial;
+}
+
+div.indicator.active {
+    background-image: url(gfx/sliceblock/indicator_green.png);
+}
+
+div.first div.indicator.active {
+    background-image: url(gfx/sliceblock/indicator_green_first.png);
+}
+
+span.name {
+    font-size: 18px;
+}
+
+span.addresses, span.dash {
+    position: relative;
+    top: -1px;
+    color: rgb(110, 111, 111);
+    font-size: 11px;
+    font-weight: 600;
+    text-shadow: rgb(0, 0, 0) 1px 1px 1px;
+}
+
+div.stats {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(187, 187, 187);
+    text-shadow: rgb(0, 0, 0) 1px 1px 1px;
+}
+
+div.stats label {
+    color: rgb(120, 120, 120);
+}
+
+span.dash { padding: 0 4px; }
+
+span.bw {
+    margin-left: 4px;
+}
+
+#resize {
+    position: absolute;
+    -apple-dashboard-region: dashboard-region(control rectangle);
+    width: 12px;
+    height: 12px;
+    z-index: 1000;
+    left: 370px;
+    bottom: 19px;
+    margin-top: auto;
+}
+
+div#content {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    overflow: hidden;
+    padding: 2px;
+}
+
+div#overlay-wrap {
+    z-index: 100;
+}
+
+div#background-wrap {
+    z-index: -100;
+}
+
+div#background {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 414px;
+    min-height: 30px;
+    background-image: url(gfx/back-middle.png);
+    background-repeat: repeat-y;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: initial;
+}
+
+img#background-top {
+    position: absolute;
+    top: 0px;
+}
+
+img#background-bottom {
+    position: absolute;
+    bottom: 0px;
+    height: 27px;
+    width: 414px;
+}
+
+div#overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    min-height: 30px;
+    background-image: url(gfx/overlay-middle.png);
+    background-repeat: repeat-y;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: initial;
+}
+
+img#overlay-top {
+    position: absolute;
+    top: 0px;
+}
+
+img#overlay-bottom {
+    position: absolute;
+    bottom: 0px;
+}
+
+div#back-background {
+    position: absolute;
+    top: 18px;
+    left: 0px;
+    width: 414px;
+    bottom: 27px;
+    background-image: url(gfx/back/background-middle.png);
+    background-repeat: repeat-y;
+    background-attachment: initial;
+    -khtml-background-clip: initial;
+    -khtml-background-origin: initial;
+    background-color: initial;
+}
+
+img#back-background-top {
+    position: absolute;
+    top: 0px;
+}
+
+img#back-background-bottom {
+    position: absolute;
+    bottom: 0px;
+    height: 27px;
+    width: 414px;
+}
+
+/* 
+ This file was generated by Dashcode.  
+ You may edit this file to customize your widget or web page 
+ according to the license.txt file included in the project.
+ */
+body {
+    margin: 0px;
+}
+
+#info {
+    position: absolute;
+    right: 15px;
+    bottom: 18px;
+    width: 13px;
+    height: 13px;
+    top: auto;
+    left: 386px;
+}
+
+#back {
+    display: none;
+}
+
+#done {
+    position: absolute;
+    left: 342px;
+    bottom: 22px;
+    margin-top: auto;
+}
+
+#background-bottom {
+    width: 414px;
+    height: 27px;
+    bottom: 0px;
+    margin-top: auto;
+}
+
+#background {
+    min-height: 0px;
+    -webkit-border-top-left-radius: 0px 0px;
+    -webkit-border-top-right-radius: 0px 0px;
+    -webkit-border-bottom-left-radius: 0px 0px;
+    -webkit-border-bottom-right-radius: 0px 0px;
+    margin-left: 0px;
+    -khtml-margin-top-collapse: separate;
+    -khtml-margin-bottom-collapse: separate;
+    width: 414px;
+    position: relative;
+    left: 0px !important;
+    bottom: 27px;
+    top: 21px !important;
+    height: auto;
+    opacity: 1;
+}
+
+#background-top {
+    width: 414px;
+    right: auto;
+    left: auto;
+    height: 21px;
+    top: 0px;
+    margin-bottom: auto;
+}
+
+#overlay-bottom {
+    width: 396px;
+    height: 9px;
+    bottom: 13px !important;
+    left: 9px;
+    margin-top: auto;
+}
+
+#overlay {
+    -webkit-border-top-left-radius: 0px 0px;
+    -webkit-border-top-right-radius: 0px 0px;
+    -webkit-border-bottom-left-radius: 0px 0px;
+    -webkit-border-bottom-right-radius: 0px 0px;
+    margin-left: 0px;
+    -khtml-margin-top-collapse: separate;
+    -khtml-margin-bottom-collapse: separate;
+    width: 396px;
+    position: relative;
+    left: 9px !important;
+    top: 14px !important;
+    bottom: 22px;
+    margin-top: 0px;
+}
+
+#overlay-top {
+    width: 396px;
+    right: auto;
+    height: 9px;
+    left: 9px;
+    top: 5px !important;
+    margin-bottom: auto;
+}
+
+#content {
+    left: 10px;
+    top: 5px !important;
+    right: 9px;
+    width: auto;
+    bottom: 13px;
+    height: auto;
+}
+
+#seperator {
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    left: 23px;
+    top: 47px;
+    height: 2px;
+    width: 369px;
+}
+
+#help {
+    font-family: HelveticaNeue;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    top: 24px;
+    left: 23px;
+    right: 21px;
+    width: auto;
+    height: auto;
+    text-shadow: rgb(58, 58, 58) 1px 1px 1px;
+    color: rgb(147, 147, 147);
+    font-size: 9pt;
+    text-align: left;
+}
+
+#apiKeyLabel {
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    left: 23px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(60, 60, 60) 1px 1px 1px;
+    text-align: right;
+    top: 63px;
+    right: 319px;
+    width: auto;
+    height: auto;
+}
+
+#apiKeyField {
+    position: absolute;
+    color: black;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    width: 182px;
+    top: 59px;
+    left: 103px;
+}
+
+#fetchSlicesButton {
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    left: 303px;
+    top: 60px;
+    opacity: 0.5;
+}
+
+#seperator1 {
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    height: 2px;
+    width: 369px;
+    left: 24px;
+    top: 94px;
+}
+
+#seperator2 {
+    position: absolute;
+    right: auto;
+    height: 2px;
+    width: 369px;
+    left: 23px;
+    bottom: 52px;
+    margin-top: auto;
+}
+
+#slicesLabel {
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    left: 23px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(60, 60, 60) 1px 1px 1px;
+    text-align: right;
+    top: 109px;
+    right: 319px;
+    width: auto;
+    height: auto;
+}
+
+#slicesContainer {
+    margin-top: 109px;
+    margin-left: 103px;
+    margin-right: 22px;
+    width: 279px !important;
+}
+
+#back_spinner {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    left: 376px;
+    top: 23px;
+    display: none;
+}
+
+#back_message {
+    font-size: 10pt;
+    position: absolute;
+    height: 20px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(54, 54, 54) 1px 1px 1px;
+    font-style: italic;
+    font-family: 'Helvetica Neue';
+    left: 103px;
+    width: 228px;
+    bottom: 21px;
+    margin-top: auto;
+}
+
+#front_spinner {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 10px;
+    left: 383px;
+    display: none;
+}
+
+#sliceMonitor {
+    font-family: HelveticaNeue;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(68, 68, 68) 1px 1px 1px;
+    font-size: 8pt;
+    text-align: right;
+    left: 23px;
+    top: 151px;
+    right: 318px;
+    width: auto;
+    bottom: 26px;
+    margin-top: auto;
+    height: 13px;
+}
