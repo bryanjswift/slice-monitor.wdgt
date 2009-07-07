@@ -6,5 +6,8 @@ The big green indicator to the left turns orange whenever something is going on 
 
 Of course, this is no replacement for any monitoring tool out there - it’s just something I felt was missing and threw together one night.
 
-# Screens
+# Screenshot
 ![slicemonitor](http://luddep.se/static/content/pics/widgets/slicemonitor/screenshot2.png)
+
+# Requirements
+For now, only OS X Leopard is supported.
