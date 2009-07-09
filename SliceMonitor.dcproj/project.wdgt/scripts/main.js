@@ -384,7 +384,7 @@ function buildFrontSliceList(preData)
             status = $(this).find('status').text();
             bw_in = $(this).find('bw-in').text();
             bw_out = $(this).find('bw-out').text();
-            bw_iototal = parseFloat(bw_in) + parseFloat(bw_out);
+            bw_iototal = fixAtTwo(parseFloat(bw_in) + parseFloat(bw_out));
             bw_available = $(this).find('progress').text();
         
             // Build sliceblock
@@ -885,3 +885,17 @@ Array.prototype.inArray = function (value)
     return false;
     }
 
+function fixAtTwo(anynum) 
+{
+	var numStr=anynum.toString();
+	var decPos = numStr.indexOf(".");	
+	if ( decPos == -1 )
+		return numStr + ".00";
+	else
+	{
+		// add two zeros to get at least two digits at the 
+		// end of the string in case it ends at the decimal
+		numStr += "00";	
+		return numStr.substr(0,decPos+3);
+	}
+}
