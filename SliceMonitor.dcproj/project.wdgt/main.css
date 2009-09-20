@@ -166,7 +166,7 @@ span.name {
     font-size: 18px;
 }
 
-span.addresses, span.dash {
+span.addresses, span.dash, span.type {
     position: relative;
     top: -1px;
     color: rgb(110, 111, 111);

@@ -24,11 +24,13 @@ var selectedSlices = []
 
 // Data
 var data = '';
+var imageTypes = {};
 
 // API URL
-var api_url = 'https://api.slicehost.com/slices.xml'
+var api_url = 'https://api.slicehost.com/slices.xml';
+var image_api_url = 'https://api.slicehost.com/images.xml';
 var test_url = false;
-//var test_url = 'http://dl-client.getdropbox.com/u/24582/test.xml'
+//var test_url = 'http://dl-client.getdropbox.com/u/24582/test.xml';
 
 /*
     # Data fetch functions #
@@ -127,9 +129,33 @@ function fetchData(callback, side) {
                 $('div#back_message').html('API Error: no slices were found.')
             }
         },
-        timeout: 15000,
+        timeout: 10000,
      });
+}
 
+// Function: fetchImageTypes()
+// Setup an object with Image-Id to Image name
+function fetchImageTypes() {
+    var apiKey = getPref('apiKey');
+    alert('Fetching Image Types');
+    if (apiKey) {
+        $.ajax({
+            type:'GET',
+            username:apiKey,
+            password:apiKey,
+            url:image_api_url,
+            error: function() {
+                alert('Error retrieving image data.. uhoh..');
+            },
+            success: function(data,status) {
+                alert('Image types fetched.. processing ' + $(data).find('image').length + ' types');
+                $(data).find('image').each(function() {
+                    var image = $(this);
+                    imageTypes[image.find('id[type=integer]').text()] = image.find('name').text();
+                });
+            }
+        });
+    }
 }
 
 // Function: resetAjax()
@@ -159,6 +185,7 @@ function fetchSlices() {
         setPref('apiKey', apiKeyField.val());
 
         // Fetch Data
+        fetchImageTypes();
         fetchData(populateSliceList(), 'back');
     }
 }
@@ -386,11 +413,14 @@ function buildFrontSliceList(preData)
             bw_out = $(this).find('bw-out').text();
             bw_iototal = fixAtTwo(parseFloat(bw_in) + parseFloat(bw_out));
             bw_available = $(this).find('progress').text();
+            image_id = $(this).find('image-id').text();
+            var type = imageTypes[image_id] ? '<span class="dash"> &mdash; </span><span class="type">' + imageTypes[image_id] + '</span>' : '';
+            alert('type: ' + type);
         
             // Build sliceblock
             sliceblock = $('<div class="sliceblock" id="'+slugify(name)+'"></div>')
                             .append($('<div class="indicator '+status+'"></div>'))
-                            .append($('<div class="header"><span class="name">'+name+'</span><span class="dash">&mdash;</span><span class="addresses"></span></div>'))
+                            .append($('<div class="header"><span class="name">'+name+'</span><span class="dash">&mdash;</span><span class="addresses"></span>' + type + '</div>'))
                             .append($('<div class="stats"><span class="status">'+
                                       '<label>Status:</label> '+status+'</span>'+
                                       '<span class="bw">'+
@@ -669,7 +699,7 @@ function show()
             
             alert('Updating status ('+window.shows+')')
         } else {
-            alert('Not updating status, first show ('+window.shows+')')
+            alert('Not updating status, first show ('+window.shows+')');
         }
     }
     
