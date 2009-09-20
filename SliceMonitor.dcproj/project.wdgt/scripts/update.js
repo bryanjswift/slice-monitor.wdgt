@@ -5,10 +5,10 @@ var version_url = 'http://luddep.se/static/slicemonitor.txt',
 // Function: checkForUpdate();
 // checks for a new version of the widget
 function checkForUpdate() {
-    $.get(version_url, {}, function(data, textStatus){
+    $.get(version_url, {}, function(data, textStatus) {
         
         latest = data.replace(regexp, '');
-        current = version.replace(regexp, '')
+        current = version.replace(regexp, '');
         
         alert('latest: '+latest+', current: '+current);
     
