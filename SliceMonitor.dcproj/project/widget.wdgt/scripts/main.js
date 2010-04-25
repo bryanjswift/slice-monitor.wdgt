@@ -140,9 +140,9 @@ function fetchImageTypes() {
     alert('Fetching Image Types');
     if (apiKey) {
         $.ajax({
-            type:'GET',
-            username:apiKey,
-            password:apiKey,
+            type: 'GET',
+            username: apiKey,
+            password: apiKey,
             url:image_api_url,
             error: function() {
                 alert('Error retrieving image data.. uhoh..');
@@ -414,7 +414,7 @@ function buildFrontSliceList(preData)
             bw_iototal = fixAtTwo(parseFloat(bw_in) + parseFloat(bw_out));
             bw_available = $(this).find('progress').text();
             image_id = $(this).find('image-id').text();
-            var type = imageTypes[image_id] ? '<span class="dash"> &mdash; </span><span class="type">' + imageTypes[image_id] + '</span>' : '';
+            var type = '<span class="dash"> &mdash; </span><span class="type">' + (imageTypes[image_id] ? imageTypes[image_id] : 'Not found') + '</span>';
             alert('type: ' + type);
         
             // Build sliceblock
