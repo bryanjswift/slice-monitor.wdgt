@@ -94,13 +94,13 @@ function fetchData(callback, side) {
         },
         success: callback,
         error: function(XMLHttpRequest, textStatus, errorThrown) {
-            if (window.isFront) {
-                showBack();
-            }
             if(textStatus == 'timeout') {
                 $('div#back_message').html('Timeout error: (recheck API Key?)');
             } else {
                 $('div#back_message').html('Error: '+textStatus);
+                if (window.isFront) {
+                    showBack();
+                }
             }
             
             alert('AJAX error: '+textStatus);
