@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="Parts/parts.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/jquery.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/jquery.ui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
@@ -11,25 +12,23 @@
     <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleScrollbar.js" charset="utf-8"></script>
     <script type="text/javascript" src="/System/Library/WidgetResources/AppleClasses/AppleScrollArea.js" charset="utf-8"></script>
     <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Parts/utilities.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Parts/setup.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Parts/Text.js" charset="utf-8"></script>
     <script type="text/javascript" src="Parts/ScrollArea.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Parts/InfoButton.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Parts/GlassButton.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/main.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/ui.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/update.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/md5.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js" charset="utf-8"></script>
 </head>
-<body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
-    <div id="front">
+<body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout" style="">
+    <div id="front" style="">
         <div id="frontWrap">
             <div style="width:0; height: 0; background: url(gfx/back/background-middle.png);"></div>
             <!-- black background -->
             <div id="background-wrap">
-                <img src="gfx/back-top.png" id="background-top">
-                <img src="gfx/back-bottom.png" id="background-bottom">
+                <img src="gfx/back-top.png" id="background-top" apple-part="com.apple.Dashcode.part.image">
+                <img src="gfx/back-bottom.png" id="background-bottom" apple-part="com.apple.Dashcode.part.image">
                 <div id="background"></div>
             </div>
             <div id="temp" style="display: none; "></div>
@@ -52,30 +51,31 @@
             </div>
             <!-- white overlay -->
             <div id="overlay-wrap">
-                <img src="gfx/overlay-top.png" id="overlay-top">
-                <img src="gfx/overlay-bottom.png" id="overlay-bottom">
+                <img src="gfx/overlay-top.png" id="overlay-top" apple-part="com.apple.Dashcode.part.image">
+                <img src="gfx/overlay-bottom.png" id="overlay-bottom" apple-part="com.apple.Dashcode.part.image">
                 <div id="overlay"></div>
             </div>
             <!-- info -->
             <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden" style="opacity:0.5;"></div>
             <!-- resize dragger -->
             <!--<img id="resize" src="/System/Library/WidgetResources/resize.png" onmousedown="mouseDown(event);">-->
-            <img src="gfx/spinners/front.gif" id="front_spinner"></div>
+            <img src="gfx/spinners/front.gif" id="front_spinner" apple-part="com.apple.Dashcode.part.image">
+        </div>
     </div>
-    <div id="back">
+    <div id="back" style="">
         <!-- black background -->
         <div id="back-background-wrap">
-            <img src="gfx/back/background-top.png" id="back-background-top">
-            <img src="gfx/back/background-bottom.png" id="back-background-bottom">
+            <img src="gfx/back/background-top.png" id="back-background-top" apple-part="com.apple.Dashcode.part.image">
+            <img src="gfx/back/background-bottom.png" id="back-background-bottom" apple-part="com.apple.Dashcode.part.image">
             <div id="back-background"></div>
         </div>
         <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
-        <img src="Images/line.png" id="seperator">
+        <img src="Images/line.png" id="seperator" apple-part="com.apple.Dashcode.part.image">
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="help" apple-style="part-height-dependent: true;"></div>
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="apiKeyLabel" apple-style="part-height-dependent: true;"></div>
         <input type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" id="apiKeyField" onkeyup="activateFetchSlicesButton(event)">
         <div apple-part="com.apple.Dashcode.part.glassbutton" class="apple-no-children" id="fetchSlicesButton"></div>
-        <img src="Images/line.png" id="seperator1">
+        <img src="Images/line.png" id="seperator1" apple-part="com.apple.Dashcode.part.image">
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="slicesLabel" apple-style="part-height-dependent: true;"></div>
         <div id="slices-temp" style="display: none; "></div>
         <div id="slicesContainer">
@@ -83,8 +83,8 @@
             </ul>
         </div>
         <div id="back_message"></div>
-        <img src="Images/line.png" id="seperator2">
-        <img src="gfx/spinners/back.gif" id="back_spinner">
+        <img src="Images/line.png" id="seperator2" apple-part="com.apple.Dashcode.part.image">
+        <img src="gfx/spinners/back.gif" id="back_spinner" apple-part="com.apple.Dashcode.part.image">
         <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="sliceMonitor" style="cursor: pointer;" onclick="javascript:widget.openURL('http://luddep.se/slicemonitor/');"></div>
     </div>
 </body>
